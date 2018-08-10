@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import actors.TimeActor;
 import actors.UserActor;
-import actors.UserActor2;
 import akka.actor.ActorSystem;
 import akka.stream.Materializer;
 import play.libs.streams.ActorFlow;
@@ -30,7 +29,7 @@ public class HomeController extends Controller {
 	}
 	   
 	public WebSocket ws() {
-		return WebSocket.Json.accept(request -> ActorFlow.actorRef(UserActor2::props, actorSystem, materializer));
+		return WebSocket.Json.accept(request -> ActorFlow.actorRef(UserActor::props, actorSystem, materializer));
 	}
 
 }

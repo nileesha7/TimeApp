@@ -7,15 +7,15 @@ import akka.actor.ActorRef;
 import akka.actor.Props;
 import play.libs.Json;
 
-public final class UserActor2 extends AbstractActor {
+public final class UserActor extends AbstractActor {
 	private final ActorRef ws;
 	
-	public UserActor2(final ActorRef wsOut) {
+	public UserActor(final ActorRef wsOut) {
 		ws = wsOut;
 	}
 	
 	public static Props props(final ActorRef wsout) {
-		return Props.create(UserActor2.class, wsout);
+		return Props.create(UserActor.class, wsout);
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import akka.event.Logging;
 import akka.event.LoggingAdapter;
 public class TimeActor extends AbstractActorWithTimers{
 
-	private static List<ActorRef> userActors = new ArrayList<ActorRef>();
+private static List<ActorRef> userActors = new ArrayList<ActorRef>();
 	
 private LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
@@ -42,7 +42,7 @@ private LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 		return receiveBuilder()
 				.match(RegisterMsg.class, msg -> userActors.add(sender()))
 			    .match(Tick.class, msg -> {
-			    	UserActor2.TimeMessage tMsg = new UserActor2.TimeMessage(LocalDateTime.now().toString());
+			    	UserActor.TimeMessage tMsg = new UserActor.TimeMessage(LocalDateTime.now().toString());
 			    	log.info(LocalDateTime.now().toString());
 			        userActors.forEach(ar -> ar.tell(tMsg, self()));
 			    })
